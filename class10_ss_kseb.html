@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Karnataka Class 10 Social Science Quiz - karnatakaseb.blogspot.com</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            max-height: 100vh;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            max-width: 100vw;
+            max-height: 100vh;
+            background: white;
+            border-radius: 0;
+            box-shadow: none;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Responsive aspect ratio containers */
+        @media (min-aspect-ratio: 16/9) {
+            .container {
+                max-width: calc(100vh * 16 / 9);
+                max-height: 100vh;
+                border-radius: 20px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        @media (max-aspect-ratio: 9/16) {
+            .container {
+                max-width: 100vw;
+                max-height: calc(100vw * 16 / 9);
+            }
+        }
+
+        @media (min-width: 600px) {
+            .container {
+                border-radius: 20px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        .screen {
+            display: none;
+            padding: 15px;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screen.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Watermark */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: clamp(24px, 6vw, 48px);
+            font-weight: bold;
+            color: rgba(30, 60, 114, 0.08);
+            pointer-events: none;
+            white-space: nowrap;
+            z-index: 1;
+            user-select: none;
+        }
+
+        .screen > *:not(.watermark) {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Start Screen */
+        .start-screen {
+            text-align: center;
+            justify-content: center;
+            gap: clamp(10px, 2vh, 20px);
+        }
+
+        .logo {
+            font-size: clamp(36px, 8vw, 48px);
+            margin-bottom: 0;
+        }
+
+        h1 {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #3a6fb0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: clamp(18px, 4vw, 24px);
+            margin-bottom: 0;
+            line-height: 1.3;
+            font-weight: bold;
+        }
+
+        .website-link {
+            font-size: clamp(14px, 3vw, 18px);
+            color: #1e3c72;
+            font-weight: 700;
+            margin-top: 8px;
+            text-decoration: none;
+            cursor: pointer;
+            display: inline-block;
+            padding: 8px 16px;
+            background: #e3f2fd;
+            border-radius: 20px;
+            border: 2px solid #2a5298;
+            transition: all 0.3s ease;
+        }
+
+        .website-link:hover {
+            background: #2a5298;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .instructions {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f0f7ff 100%);
+            padding: clamp(12px, 3vh, 20px);
+            border-radius: 15px;
+            margin: 0;
+            text-align: left;
+            border: 3px solid #2a5298;
+            background-clip: padding-box;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .instructions h3 {
+            color: #1e3c72;
+            margin-bottom: clamp(8px, 2vh, 15px);
+            font-size: clamp(14px, 3vw, 18px);
+        }
+
+        .instructions ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .instructions li {
+            padding: clamp(5px, 1.5vh, 10px) 0;
+            color: #424242;
+            font-size: clamp(12px, 2.5vw, 15px);
+            display: flex;
+            align-items: center;
+        }
+
+        .instructions li:before {
+            content: "✓";
+            color: #1976d2;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: clamp(14px, 3vw, 18px);
+        }
+
+        .start-btn {
+            background: linear-gradient(135deg, #1976d2 0%, #2196f3 100%);
+            color: white;
+            border: none;
+            padding: clamp(14px, 3vh, 18px) clamp(40px, 10vw, 60px);
+            font-size: clamp(16px, 3.5vw, 20px);
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(25, 118, 210, 0.4);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            margin-top: 0;
+            flex-shrink: 0;
+        }
+
+        .start-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(25, 118, 210, 0.5);
+        }
+
+        .start-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Quiz Screen */
+        .quiz-screen {
+            justify-content: space-between;
+            gap: clamp(8px, 2vh, 15px);
+        }
+
+        .progress-container {
+            margin-bottom: 0;
+            flex-shrink: 0;
+        }
+
+        .question-count {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: clamp(5px, 1vh, 10px);
+        }
+
+        .question-number {
+            font-size: clamp(13px, 2.8vw, 16px);
+            font-weight: bold;
+            color: #1e3c72;
+        }
+
+        .score-display {
+            font-size: clamp(12px, 2.5vw, 14px);
+            color: #424242;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #e3f2fd;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #1976d2 0%, #2196f3 50%, #42a5f5 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .question-card {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f0f7ff 100%);
+            padding: clamp(12px, 3vh, 20px);
+            border-radius: 15px;
+            margin-bottom: 0;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            border: 3px solid #2a5298;
+            background-clip: padding-box;
+            position: relative;
+            overflow-y: auto;
+            min-height: 0;
+        }
+
+        .question-text {
+            font-size: clamp(14px, 3vw, 18px);
+            color: #1e3c72;
+            line-height: 1.4;
+            margin-bottom: clamp(12px, 2.5vh, 20px);
+            font-weight: 600;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(8px, 1.5vh, 12px);
+        }
+
+        .option-btn {
+            background: white;
+            border: 2px solid #90caf9;
+            padding: clamp(10px, 2vh, 15px);
+            border-radius: 12px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: clamp(13px, 2.8vw, 16px);
+            color: #212121;
+            display: flex;
+            align-items: center;
+            line-height: 1.3;
+            position: relative;
+            z-index: 10;
+        }
+
+        .option-btn:hover {
+            background: #e3f2fd;
+            border-color: #2196f3;
+            transform: translateX(5px);
+        }
+
+        .option-btn:active {
+            transform: scale(0.98);
+        }
+
+        .option-btn:before {
+            content: "";
+            width: 20px;
+            height: 20px;
+            border: 2px solid #90caf9;
+            border-radius: 50%;
+            margin-right: 12px;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .option-btn.selected {
+            background: linear-gradient(135deg, #1976d2 0%, #2196f3 100%);
+            color: white;
+            border-color: #1976d2;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(25, 118, 210, 0.4);
+        }
+
+        .option-btn.selected:before {
+            border-color: white;
+            background: white;
+        }
+
+        .option-btn.disabled {
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        .next-btn {
+            background: linear-gradient(135deg, #1976d2 0%, #2196f3 100%);
+            color: white;
+            border: none;
+            padding: clamp(12px, 2.5vh, 16px);
+            font-size: clamp(15px, 3vw, 18px);
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            opacity: 0.5;
+            pointer-events: none;
+            flex-shrink: 0;
+        }
+
+        .next-btn.active {
+            opacity: 1;
+            pointer-events: all;
+            box-shadow: 0 5px 20px rgba(25, 118, 210, 0.5);
+        }
+
+        .next-btn.active:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(25, 118, 210, 0.6);
+        }
+
+        /* Result Screen */
+        .result-screen {
+            text-align: center;
+            justify-content: center;
+            gap: clamp(10px, 2vh, 15px);
+            overflow-y: auto;
+        }
+
+        .result-icon {
+            font-size: clamp(50px, 12vw, 80px);
+            margin-bottom: 0;
+            animation: scaleIn 0.5s ease;
+        }
+
+        @keyframes scaleIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .result-title {
+            font-size: clamp(20px, 5vw, 28px);
+            color: #1e3c72;
+            margin-bottom: 0;
+            font-weight: bold;
+        }
+
+        .result-stats {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f0f7ff 100%);
+            padding: clamp(15px, 3vh, 25px);
+            border-radius: 15px;
+            margin-bottom: 0;
+            border: 3px solid #2a5298;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: clamp(8px, 1.5vh, 12px) 0;
+            border-bottom: 1px solid #90caf9;
+        }
+
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            font-size: clamp(13px, 2.8vw, 16px);
+            color: #424242;
+        }
+
+        .stat-value {
+            font-size: clamp(16px, 3.5vw, 20px);
+            font-weight: bold;
+            color: #1e3c72;
+        }
+
+        .score-percentage {
+            font-size: clamp(36px, 8vw, 48px);
+            font-weight: bold;
+            color: #1976d2;
+            margin: 0;
+        }
+
+        .performance-message {
+            font-size: clamp(16px, 3.5vw, 20px);
+            color: #1e3c72;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+
+        .result-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(8px, 1.5vh, 12px);
+        }
+
+        .retry-btn, .review-btn {
+            padding: clamp(12px, 2.5vh, 16px);
+            font-size: clamp(15px, 3vw, 18px);
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .retry-btn {
+            background: linear-gradient(135deg, #1976d2 0%, #2196f3 100%);
+            color: white;
+            box-shadow: 0 5px 20px rgba(25, 118, 210, 0.5);
+        }
+
+        .retry-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(25, 118, 210, 0.6);
+        }
+
+        .review-btn {
+            background: white;
+            color: #1976d2;
+            border: 2px solid #2196f3;
+        }
+
+        .review-btn:hover {
+            background: #e3f2fd;
+            border-color: #1976d2;
+        }
+
+        .retry-btn:active, .review-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Review Screen */
+        .review-screen {
+            overflow-y: auto;
+            padding-bottom: 10px;
+        }
+
+        .review-header {
+            position: sticky;
+            top: 0;
+            background: white;
+            padding: clamp(10px, 2vh, 15px) 0;
+            margin-bottom: clamp(10px, 2vh, 15px);
+            border-bottom: 3px solid #2a5298;
+            z-index: 10;
+        }
+
+        .review-header h2 {
+            color: #1e3c72;
+            font-size: clamp(18px, 4vw, 22px);
+        }
+
+        .review-item {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f0f7ff 100%);
+            padding: clamp(10px, 2vh, 15px);
+            border-radius: 12px;
+            margin-bottom: clamp(10px, 2vh, 15px);
+            border-left: 4px solid #90caf9;
+        }
+
+        .review-item.correct {
+            border-left: 4px solid #4caf50;
+        }
+
+        .review-item.wrong {
+            border-left: 4px solid #f44336;
+        }
+
+        .review-question {
+            font-size: clamp(13px, 2.8vw, 15px);
+            font-weight: 600;
+            color: #1e3c72;
+            margin-bottom: clamp(8px, 1.5vh, 10px);
+            line-height: 1.3;
+        }
+
+        .review-answer {
+            font-size: clamp(12px, 2.5vw, 14px);
+            padding: clamp(6px, 1vh, 8px) 0;
+            line-height: 1.3;
+        }
+
+        .review-answer.user {
+            color: #424242;
+        }
+
+        .review-answer.correct {
+            color: #2e7d32;
+            font-weight: 600;
+        }
+
+        .back-btn {
+            background: linear-gradient(135deg, #1976d2 0%, #2196f3 100%);
+            color: white;
+            border: none;
+            padding: clamp(12px, 2.5vh, 14px);
+            font-size: clamp(14px, 3vw, 16px);
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: clamp(10px, 2vh, 15px);
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(25, 118, 210, 0.4);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(25, 118, 210, 0.5);
+        }
+
+        /* Animation */
+        .fade-in {
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Start Screen -->
+        <div class="screen active start-screen">
+            <div class="watermark">karnatakaseb.blogspot.com</div>
+            <div class="logo">📚</div>
+            <h1>Karnataka State Education Board<br>Class 10 Social Science<br>MCQ Questions (LBA)</h1>
+            <a href="https://karnatakaseb.blogspot.com" target="_blank" class="website-link">karnatakaseb.blogspot.com</a>
+            <div class="instructions">
+                <h3>Instructions:</h3>
+                <ul>
+                    <li>Read each question carefully</li>
+                    <li>Select one correct answer</li>
+                    <li>Click Next to continue</li>
+                    <li>94 questions in total</li>
+                </ul>
+            </div>
+            <button class="start-btn" onclick="startQuiz()">START QUIZ</button>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div class="screen quiz-screen">
+            <div class="watermark">karnatakaseb.blogspot.com</div>
+            <div class="progress-container">
+                <div class="question-count">
+                    <span class="question-number" id="questionNumber">Question 1 of 94</span>
+                    <span class="score-display" id="scoreDisplay">Score: 0</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text" id="questionText"></div>
+                <div class="options" id="options"></div>
+            </div>
+
+            <button class="next-btn" id="nextBtn" onclick="nextQuestion()">NEXT</button>
+        </div>
+
+        <!-- Result Screen -->
+        <div class="screen result-screen">
+            <div class="watermark">karnatakaseb.blogspot.com</div>
+            <div class="result-icon" id="resultIcon">🎉</div>
+            <h2 class="result-title">Quiz Completed!</h2>
+            <div class="score-percentage" id="scorePercentage">0%</div>
+            <div class="performance-message" id="performanceMessage"></div>
+            <div class="result-stats">
+                <div class="stat-row">
+                    <span class="stat-label">Total Questions</span>
+                    <span class="stat-value" id="totalQuestions">94</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Correct Answers</span>
+                    <span class="stat-value" id="correctAnswers" style="color: #4caf50;">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Wrong Answers</span>
+                    <span class="stat-value" id="wrongAnswers" style="color: #f44336;">0</span>
+                </div>
+            </div>
+            <div class="result-buttons">
+                <button class="retry-btn" onclick="retryQuiz()">🔄 RETRY QUIZ</button>
+                <button class="review-btn" onclick="showReview()">📝 REVIEW ANSWERS</button>
+            </div>
+        </div>
+
+        <!-- Review Screen -->
+        <div class="screen review-screen">
+            <div class="watermark">karnatakaseb.blogspot.com</div>
+            <div class="review-header">
+                <h2>📝 Answer Review</h2>
+            </div>
+            <div id="reviewContent"></div>
+            <button class="back-btn" onclick="backToResults()">← BACK TO RESULTS</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                q: "The law which allowed to established the Supreme Court in Calcutta",
+                options: ["Regulating Act of 1773", "Charter Act of 1833", "Government of India Act of 1935", "Indian Council Act of 1909"],
+                correct: 0
+            },
+            {
+                q: "The post of Superintendent of Police was created by",
+                options: ["Warren Hastings", "Cornwallis", "Wellesley", "Dalhousie"],
+                correct: 1
+            },
+            {
+                q: "The British Governor who established new universities in Calcutta, Bombay and Madras",
+                options: ["William Bentinck", "Warren Hastings", "Dalhousie", "Thomas Munro"],
+                correct: 2
+            },
+            {
+                q: "The act which provided separate electoral college for Muslims",
+                options: ["1909 Indian council act", "1919 Indian Govt Act", "1935 Indian Govt Act", "1892 Indian council Act"],
+                correct: 0
+            },
+            {
+                q: "Government of India Act, 1935 is important because",
+                options: ["It introduced Diarchy provinces", "It established a Board of Control", "It introduced separate electoral constituencies on caste basis", "It created a Federal System"],
+                correct: 3
+            },
+            {
+                q: "The permanent zamindari system was introduced by",
+                options: ["Warren Hastings", "Cornwallis", "Wellesley", "Dalhousie"],
+                correct: 1
+            },
+            {
+                q: "The report that became the base for English education in India was made by",
+                options: ["Alexander Reed", "Macaulay", "Charles Wood", "Peel"],
+                correct: 1
+            },
+            {
+                q: "The state anthem of Mysore, Kayo Sri Gowri was composed by",
+                options: ["Sanchi Honnamma", "Shyama Shastri", "Basappa Shastri", "Thirumalarya"],
+                correct: 2
+            },
+            {
+                q: "The Treaty that ended First Anglo-Mysore War",
+                options: ["Treaty of Mangalore", "Treaty of Srirangapattana", "Salbai Agreement", "Treaty of Madras"],
+                correct: 3
+            },
+            {
+                q: "Surapura is located in the district of",
+                options: ["Kalaburagi", "Bellary", "Raichur", "Yadagiri"],
+                correct: 3
+            },
+            {
+                q: "The place where Sangolli Rayanna was hanged to death",
+                options: ["Kittur", "Nandagad", "Belgavi", "Sampagavi"],
+                correct: 1
+            },
+            {
+                q: "The result of the Battle of Porto Nova",
+                options: ["Hyder Ali was defeated by the British", "Tipu Sultan was defeated by the British", "Kittur was defeated by the British", "Dondia Wagh was martyred"],
+                correct: 0
+            },
+            {
+                q: "The Wodeyar who constructed Bangalore–Mysore railway line",
+                options: ["Jayachamaraja Wodeyar", "Krishnaraja Wodeyar IV", "Chamarajendra Wodeyar X", "Raja Wodeyar"],
+                correct: 2
+            },
+            {
+                q: "The one called Rajshri by Mahatma Gandhi",
+                options: ["Jayachamaraja Wodeyar", "Krishnaraja Wodeyar IV", "Chamarajendra Wodeyar X", "Raja Wodeyar"],
+                correct: 1
+            },
+            {
+                q: "The Navratri festival (Dasara) of Mysore was started in Srirangapattana by",
+                options: ["Jayachamaraja Wodeyar", "Krishnaraja Wodeyar IV", "Chamarajendra Wodeyar X", "Raja Wodeyar"],
+                correct: 3
+            },
+            {
+                q: "The state anthem of Mysore state was",
+                options: ["Kayo Sri Gowri", "Udayavagali Namma Cheluva Kannada Nadu", "Palisemmanu Chamundeshwari", "Jai Bharatha Jananiya Thanujathe"],
+                correct: 0
+            },
+            {
+                q: "The Queen gave her daughter in marriage to Yaduraya because",
+                options: ["Maranayaka ordered her", "Princess loved him", "Chamaraja pleaded", "Yaduraya killed Maranayaka and helped the Queen"],
+                correct: 3
+            },
+            {
+                q: "The policy of not joining any power blocks is called",
+                options: ["Blue water policy", "Non-alignment policy", "Apartheid policy", "Human rights policy"],
+                correct: 1
+            },
+            {
+                q: "The correct group of countries belongs to Triple Alliance",
+                options: ["Britain, France, Russia", "Italy, France, Russia", "Germany, Austria-Hungary, Italy", "Germany, Australia, Hungary, France"],
+                correct: 2
+            },
+            {
+                q: "The cities of Hiroshima and Nagasaki are",
+                options: ["USA", "Germany", "Japan", "Poland"],
+                correct: 2
+            },
+            {
+                q: "The treaty that ended the First World War",
+                options: ["Versailles", "Geneva", "Paris", "Tashkent"],
+                correct: 0
+            },
+            {
+                q: "Countries that engaged in the Cold War",
+                options: ["USA–China", "USA–Japan", "China–Soviet Russia", "USA–Soviet Russia"],
+                correct: 3
+            },
+            {
+                q: "The one different from the rest",
+                options: ["Axis", "Allies", "Alliance", "Grey Shirts"],
+                correct: 3
+            },
+            {
+                q: "The Second World War ended in",
+                options: ["1939", "1945", "1943", "1941"],
+                correct: 1
+            },
+            {
+                q: "Nations which formed Triple Entente",
+                options: ["Britain-France-Russia", "Italy-France-Russia", "Germany-Austria-Hungary-Italy", "Germany-Austria-Hungary-France"],
+                correct: 0
+            },
+            {
+                q: "Country which defeated Germany at Stalingrad (1942)",
+                options: ["Russia", "Japan", "Britain", "France"],
+                correct: 0
+            },
+            {
+                q: "Country where Socialist Revolution took place in 1917",
+                options: ["Russia", "Japan", "Britain", "France"],
+                correct: 0
+            },
+            {
+                q: "The United Nations was established in the year",
+                options: ["1950", "1945", "1919", "1948"],
+                correct: 1
+            },
+            {
+                q: "The term United Nations was coined by",
+                options: ["Franklin D. Roosevelt", "Winston Churchill", "Joseph Stalin", "Alfred Savage"],
+                correct: 0
+            },
+            {
+                q: "Headquarters of United Nations is located in",
+                options: ["The Hague", "Geneva", "Washington", "New York"],
+                correct: 3
+            },
+            {
+                q: "The subsidiary body called Cabinet of UN",
+                options: ["General Assembly", "Secretariat", "Security Council", "Trusteeship Council"],
+                correct: 2
+            },
+            {
+                q: "Headquarters of International Court of Justice",
+                options: ["The Hague", "Geneva", "Washington", "New York"],
+                correct: 0
+            },
+            {
+                q: "World Health Organization founded in",
+                options: ["1945", "1948", "1950", "1965"],
+                correct: 1
+            },
+            {
+                q: "UN agency that won Nobel Peace Prize in 1965",
+                options: ["UNESCO", "WHO", "WTO", "UNICEF"],
+                correct: 3
+            },
+            {
+                q: "Headquarters of SAARC",
+                options: ["Delhi", "Geneva", "Kathmandu", "New York"],
+                correct: 2
+            },
+            {
+                q: "League of Nations failed due to",
+                options: ["Establishment of UN", "Starting of WWII", "End of WWI", "Cold War"],
+                correct: 1
+            },
+            {
+                q: "UN organ known as World Parliament",
+                options: ["Secretariat", "Security Council", "General Assembly", "Trusteeship Council"],
+                correct: 2
+            },
+            {
+                q: "Number of representatives from each member state in General Assembly",
+                options: ["2", "3", "4", "5"],
+                correct: 3
+            },
+            {
+                q: "The article of our Constitution which prohibits the practice of untouchability",
+                options: ["Article 24", "Article 42", "Article 17", "Article 30"],
+                correct: 2
+            },
+            {
+                q: "Who said that \"Truly, the whole mankind is one\"",
+                options: ["Pampa", "Janna", "Ranna", "Ambedkar"],
+                correct: 0
+            },
+            {
+                q: "'Untouchability is a stigma on the Hindu society' is said by",
+                options: ["Ambedkar", "Jyotiba Phule", "Mahatma Gandhiji", "Vivekananda"],
+                correct: 2
+            },
+            {
+                q: "Untouchability Crime Act was changed as Civil Rights Protection Act in",
+                options: ["1989", "1976", "1955", "1950"],
+                correct: 1
+            },
+            {
+                q: "The year in which the Untouchability Crime Act came into force",
+                options: ["1976", "1955", "1989", "1996"],
+                correct: 1
+            },
+            {
+                q: "The significance of Article 17 of the Constitution",
+                options: ["Prohibition of child labour", "Elimination of illiteracy", "Elimination of untouchability", "Prohibition of dowry"],
+                correct: 2
+            },
+            {
+                q: "Social stratification in India can be seen in",
+                options: ["Apartheid", "Slavery", "Caste system", "Plebians and Patricians"],
+                correct: 2
+            },
+            {
+                q: "Silent Valley Movement launched in",
+                options: ["Tamil Nadu", "Karnataka", "Kerala", "Maharashtra"],
+                correct: 2
+            },
+            {
+                q: "Environmental movement held in Salyani village of Uttara Kannada",
+                options: ["Chipko", "Appiko", "Silent Valley", "Kaiga"],
+                correct: 1
+            },
+            {
+                q: "Narmada Bachao Movement was led by",
+                options: ["Medha Patkar", "Dr. Shivaram Karanth", "Sunder Lal Bahuguna", "Ambedkar"],
+                correct: 0
+            },
+            {
+                q: "Environmental movement led by Dr. Shivaram Karanth",
+                options: ["Silent Valley", "Kaiga Anti-Nuclear Movement", "Chipko", "Appiko"],
+                correct: 1
+            },
+            {
+                q: "Founder of Karnataka State Farmers' Association",
+                options: ["Prof. M.D. Nanjundaswamy", "Shivaram Karanth", "Devaraj Urs", "Baba Amte"],
+                correct: 0
+            },
+            {
+                q: "Practice of bonded labour in Karnataka was abolished by",
+                options: ["Nanjundaswamy", "Devaraj Urs", "Shivaram Karanth", "Baba Amte"],
+                correct: 1
+            },
+            {
+                q: "Environmental movement led by Sundarlal Bahuguna",
+                options: ["Chipko", "Appiko", "Silent Valley", "MRPL"],
+                correct: 0
+            },
+            {
+                q: "The eastern parts of Western Ghats get less rainfall than the western parts because",
+                options: ["They lie in the south", "They are rain shadow regions", "They get heavy snowfall", "There are dense forests"],
+                correct: 1
+            },
+            {
+                q: "During retreating monsoon season cyclones occur in Bay of Bengal due to",
+                options: ["Difference in temperature and pressure between land and ocean", "Vertical rays of sun increase temperature", "Areas lie high from sea level", "North India far from sea"],
+                correct: 0
+            },
+            {
+                q: "Pre-monsoon rainfall in West Bengal is called",
+                options: ["Andhis", "Kala Baisakhi", "Coffee Blossoms", "Mango Showers"],
+                correct: 1
+            },
+            {
+                q: "Pre-monsoon rainfall in Uttar Pradesh is called",
+                options: ["Andhis", "Kala Baisakhi", "Coffee Blossoms", "Mango Showers"],
+                correct: 0
+            },
+            {
+                q: "Pre-monsoon rainfall in Kerala is called",
+                options: ["Andhis", "Kala Baisakhi", "Coffee Blossoms", "Mango Showers"],
+                correct: 3
+            },
+            {
+                q: "Pre-monsoon rainfall in Karnataka is called",
+                options: ["Andhis", "Kala Baisakhi", "Coffee Blossoms", "Mango Showers"],
+                correct: 2
+            },
+            {
+                q: "Period of Retreating Monsoon season in India",
+                options: ["March–May", "June–September", "October–November", "December–February"],
+                correct: 2
+            },
+            {
+                q: "The eastern parts of Western Ghats get less rainfall than the western parts because",
+                options: ["They lie in the south", "They are rain shadow regions", "Heavy snowfall", "Dense forests"],
+                correct: 1
+            },
+            {
+                q: "Cyclones during retreating monsoon occur due to",
+                options: ["Land–sea temperature difference", "Vertical sun rays", "Height from sea level", "Distance from sea"],
+                correct: 0
+            },
+            {
+                q: "The port which is known as the 'Gateway of India'",
+                options: ["Kolkata", "New Mangalore", "Goa", "Mumbai"],
+                correct: 3
+            },
+            {
+                q: "The 'Tea Port of India'",
+                options: ["Mumbai", "New Mangalore", "Marmagoa", "Kolkata"],
+                correct: 3
+            },
+            {
+                q: "The longest national highway in India",
+                options: ["National Highway 44", "National Highway 37", "National Highway 47", "National Highway 54"],
+                correct: 0
+            },
+            {
+                q: "The year in which the Airports Authority of India was established",
+                options: ["1988", "1947", "1995", "1965"],
+                correct: 2
+            },
+            {
+                q: "Natural port of India among the following",
+                options: ["Chennai", "Mumbai", "Marma Gao", "Visakhapatnam"],
+                correct: 3
+            },
+            {
+                q: "The system which is known as the route finder or path finder",
+                options: ["GPS", "GIS", "GST", "RST"],
+                correct: 0
+            },
+            {
+                q: "The regional and independent GPS system of India is",
+                options: ["Map info", "Swadeshi", "Navik", "Arc info"],
+                correct: 2
+            },
+            {
+                q: "The country which has highest road in the world",
+                options: ["China", "Russia", "France", "India"],
+                correct: 3
+            },
+            {
+                q: "The first steel industry in India was established in",
+                options: ["Serampura", "Salem", "Bhadravathi", "Kulti"],
+                correct: 3
+            },
+            {
+                q: "The place which is called Manchester of India",
+                options: ["Davangere", "Mumbai", "Coimbatore", "Salem"],
+                correct: 1
+            },
+            {
+                q: "The Silicon Valley of India",
+                options: ["Bangalore", "Delhi", "Mysore", "Hyderabad"],
+                correct: 0
+            },
+            {
+                q: "The ISRO was established in the year",
+                options: ["1961", "1976", "1969", "1950"],
+                correct: 2
+            },
+            {
+                q: "The first country to land near the south pole of the moon",
+                options: ["America", "China", "Japan", "India"],
+                correct: 3
+            },
+            {
+                q: "The contribution of the primary sector to the national income",
+                options: ["Increasing", "Decreasing", "Equal", "Increasingly decreasing"],
+                correct: 1
+            },
+            {
+                q: "The real development of India is the development of villages is said by",
+                options: ["Gandhiji", "Visvesvaraya", "Nehru", "Ambedkar"],
+                correct: 0
+            },
+            {
+                q: "The Panchayat Raj system has been implemented through this amendment",
+                options: ["42nd", "46th", "73rd", "74th"],
+                correct: 2
+            },
+            {
+                q: "The system brought into practice as per the 73rd amendment",
+                options: ["Two tier system", "Three tier system", "Single tier system", "Four tier system"],
+                correct: 1
+            },
+            {
+                q: "Panchayat institutions function under the principles of",
+                options: ["Socialist", "Democracy", "Autocratic", "Monarchy"],
+                correct: 1
+            },
+            {
+                q: "This scheme is cooperative to develop the basic amenities of villages",
+                options: ["NREGA", "Swarna Jayanti Gram Swaraj Udyog Yojana", "Suvarna Gramodaya Yojana", "Indira Awas Yojana"],
+                correct: 2
+            },
+            {
+                q: "The scheme to organize the rural poor women and make them economically self-reliant",
+                options: ["Stree Shakti", "Sukanya Samriddhi", "Stree Samriddhi", "Stree Abyudaya"],
+                correct: 0
+            },
+            {
+                q: "The idea of Gram Swaraj is given by",
+                options: ["Jawahar Lal Nehru", "Bala Gangadhar Tilak", "Sardar Vallabhbhai Patel", "Mahatma Gandhiji"],
+                correct: 3
+            },
+            {
+                q: "The scheme launched to provide houses to houseless people",
+                options: ["Ashraya", "Sandhya Suraksha", "Sukanya Samriddhi", "Jawahar Rozgar"],
+                correct: 0
+            },
+            {
+                q: "The financial year in India ends on",
+                options: ["April 1", "January 1", "March 31", "December 31"],
+                correct: 2
+            },
+            {
+                q: "The central budget is presented in the Lok Sabha by the",
+                options: ["Chief Minister", "Prime Minister", "State Finance Minister", "Union Finance Minister"],
+                correct: 3
+            },
+            {
+                q: "Developing Countries usually present",
+                options: ["Surplus Budget", "Balanced Budget", "Deficit Budget", "Developmental Budget"],
+                correct: 2
+            },
+            {
+                q: "An example for direct tax is",
+                options: ["Import export tax", "Goods and services tax", "Corporate Tax", "Foreign Travel Tax"],
+                correct: 2
+            },
+            {
+                q: "In India it is mandatory to get the budget approval before this date",
+                options: ["April 01", "January 01", "March 31", "December 31"],
+                correct: 2
+            },
+            {
+                q: "The word 'bank' is derived from this Italian word",
+                options: ["Banker", "Banque", "Banco", "Bench"],
+                correct: 2
+            },
+            {
+                q: "This is called the central bank of India",
+                options: ["Reserve Bank of India", "Syndicate Bank", "State Bank of India", "Commercial Bank"],
+                correct: 0
+            },
+            {
+                q: "Senior citizens and pensioners with a fixed income usually open this account",
+                options: ["Savings account", "Current account", "Recurring deposit account", "Fixed deposit account"],
+                correct: 3
+            },
+            {
+                q: "An account that can be opened for future needs such as children's marriage, purchase of valuables, land, car, etc.",
+                options: ["Fixed deposit account", "Recurring deposit account", "Current account", "Savings account"],
+                correct: 1
+            },
+            {
+                q: "This department issues National Savings Certificates",
+                options: ["Postal Department", "Agriculture Department", "Financial Department", "Education Department"],
+                correct: 0
+            },
+            {
+                q: "The bank account that allows depositing and withdrawing money as many times as necessary in a day",
+                options: ["Current account", "Savings account", "Recurring deposit account", "Fixed deposit account"],
+                correct: 0
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = [];
+
+        function startQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            userAnswers = [];
+            showScreen('quiz-screen');
+            loadQuestion();
+        }
+
+        function showScreen(screenClass) {
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.remove('active');
+            });
+            document.querySelector('.' + screenClass).classList.add('active');
+        }
+
+        function loadQuestion() {
+            const q = questions[currentQuestion];
+            
+            // Update progress
+            document.getElementById('questionNumber').textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+            document.getElementById('scoreDisplay').textContent = `Score: ${score}`;
+            document.getElementById('progressFill').style.width = ((currentQuestion + 1) / questions.length * 100) + '%';
+            
+            // Load question
+            document.getElementById('questionText').textContent = q.q;
+            
+            // Load options
+            const optionsContainer = document.getElementById('options');
+            optionsContainer.innerHTML = '';
+            
+            q.options.forEach((option, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.textContent = option;
+                btn.onclick = () => selectOption(index);
+                optionsContainer.appendChild(btn);
+            });
+            
+            // Reset next button
+            document.getElementById('nextBtn').classList.remove('active');
+            
+            // Add animation
+            document.querySelector('.question-card').classList.add('fade-in');
+            setTimeout(() => {
+                document.querySelector('.question-card').classList.remove('fade-in');
+            }, 300);
+        }
+
+        function selectOption(index) {
+            const buttons = document.querySelectorAll('.option-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('selected');
+                btn.classList.add('disabled');
+            });
+            
+            buttons[index].classList.add('selected');
+            buttons[index].classList.remove('disabled');
+            
+            userAnswers[currentQuestion] = index;
+            
+            if (index === questions[currentQuestion].correct) {
+                score++;
+            }
+            
+            document.getElementById('nextBtn').classList.add('active');
+        }
+
+        function nextQuestion() {
+            if (userAnswers[currentQuestion] === undefined) return;
+            
+            currentQuestion++;
+            
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            const percentage = Math.round((score / questions.length) * 100);
+            const wrong = questions.length - score;
+            
+            document.getElementById('scorePercentage').textContent = percentage + '%';
+            document.getElementById('correctAnswers').textContent = score;
+            document.getElementById('wrongAnswers').textContent = wrong;
+            
+            // Performance message
+            let message = '';
+            let icon = '';
+            
+            if (percentage >= 90) {
+                message = '🌟 Excellent! Outstanding Performance!';
+                icon = '🏆';
+            } else if (percentage >= 70) {
+                message = '👏 Very Good! Keep it up!';
+                icon = '🎉';
+            } else if (percentage >= 50) {
+                message = '👍 Good! You can do better!';
+                icon = '😊';
+            } else {
+                message = '📚 Practice More! Don\'t give up!';
+                icon = '💪';
+            }
+            
+            document.getElementById('performanceMessage').textContent = message;
+            document.getElementById('resultIcon').textContent = icon;
+            
+            showScreen('result-screen');
+        }
+
+        function retryQuiz() {
+            startQuiz();
+        }
+
+        function showReview() {
+            const reviewContent = document.getElementById('reviewContent');
+            reviewContent.innerHTML = '';
+            
+            questions.forEach((q, index) => {
+                const item = document.createElement('div');
+                item.className = 'review-item ' + (userAnswers[index] === q.correct ? 'correct' : 'wrong');
+                
+                item.innerHTML = `
+                    <div class="review-question">Q${index + 1}. ${q.q}</div>
+                    <div class="review-answer user">Your answer: ${userAnswers[index] !== undefined ? q.options[userAnswers[index]] : 'Not answered'}</div>
+                    <div class="review-answer correct">Correct answer: ${q.options[q.correct]}</div>
+                `;
+                
+                reviewContent.appendChild(item);
+            });
+            
+            showScreen('review-screen');
+        }
+
+        function backToResults() {
+            showScreen('result-screen');
+        }
+    </script>
+</body>
+</html>
